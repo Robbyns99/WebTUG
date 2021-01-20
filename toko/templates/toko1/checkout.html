@@ -37,8 +37,9 @@
       <br>
 
       <div class="box-element hidden" id="payment-info">
-        <small>Pengaturan pembayaran</small>
-        <button id="make-payment">Buat pembayaran</button>
+        <b><small>Pengaturan pembayaran</small></b>
+        <div id="paypal-button-container"></div>
+        <!--<button id="make-payment">Buat pembayaran</button>-->
       </div>
     </div>
 
@@ -62,9 +63,43 @@
     </div>
   </div>
 
-<script type="text/javascript">
-    var pengirimian = '{{pesan.pengiriman}}'
+  <div id="dana-container"></div>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=AeKgT282WDCRy3ho75F8FN15J-DgHNTGD-M47TEnFiCiCKvoajbLMva1OXh0tpZbrwq5JupzHqyxx6h7&currency=USD"></script>
+  <script>
     var total = "{{pesan.get_cart_total}}"
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+
+      style:{
+        color:'gold',
+        shape:'pill',
+      },
+
+        // Set up the transaction
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '0.01'
+                    }
+                }]
+            });
+        },
+
+        // Finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+              submitFormData()
+            });
+        }
+
+    }).render('#paypal-button-container');
+</script>
+
+  <script type="text/javascript">
+    var pengirimian = '{{pesan.pengiriman}}'
+    
     var user = "{{user}}"
     
     if(pengirimian == 'False'){
@@ -89,9 +124,11 @@
       document.getElementById('payment-info').classList.remove("hidden");
     })
 
+    /*
     document.getElementById('make-payment').addEventListener('click',function(e){
       submitFormData()
     })
+    */
 
       function submitFormData(){
         console.log('Payment button clicked')

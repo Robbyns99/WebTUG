@@ -1,0 +1,7 @@
+1. Anda menambahkan tombol pembayaran pintar Paypal ke halaman web Anda.
+2. Pembeli Anda mengklik tombol.
+3. Tombol tersebut memanggil API perintah Paus untuk mengatur transaksi.
+4. Tombol meluncurkan pengalaman pembayaran Paypal.
+5. Pembeli menyetujui pembayaran.
+6. Tombol memanggil API pesanan Paypal untuk menyelesaikan transaksi.
+7. Anda menunjukkan konfirmasi kepada pembeli Anda.

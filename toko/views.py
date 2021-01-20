@@ -3,6 +3,7 @@ from django.http import JsonResponse
 import json
 import datetime
 from .utils import cookieCart, cartData, guestOrder
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Produk
 from .models import Customer
@@ -48,7 +49,7 @@ def checkout(request):
 	context = {'items':items, 'pesan':pesan, 'cartItems':cartItems, 'user':user}
 	return render(request, 'toko1/checkout.html', context)
 
-#advanechURL
+ #advanechURL
 def updateItem(request):
 	data = json.loads(request.body)
 	produkId = data['produkId']
@@ -74,6 +75,8 @@ def updateItem(request):
 
 	return JsonResponse('Item telah ditambahkan', safe=False)
 
+@csrf_exempt
+#csrf_exempt untuk membaca interaksi proses antara data customer ke admin
 def prosesPesan(request):
 	transaksi_id = datetime.datetime.now().timestamp()
 	data = json.loads(request.body)
