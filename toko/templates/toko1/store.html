@@ -1,19 +1,21 @@
 {% extends 'toko1/main.html' %}
 {% load static %}
 {% block content %}
-  <div class="row">
-    {% for Produk in Produks %}
-    <div class="col-lg-4">
-        <img class="thumbnail" src="{{Produk.imageURL}}">
-        <div class="box-element product">
-          <h6><strong>{{Produk.nama}}</strong></h6>
-          <hr>
+  <div class="cursor">
+    <div class="row">
+      {% for Produk in Produks %}
+      <div class="col-lg-4">
+          <img class="thumbnail" src="{{Produk.imageURL}}">
+          <div class="box-element product">
+            <h6><strong>{{Produk.nama}}</strong></h6>
+            <hr>
 
-          <button  data-produk="{{Produk.id}}" data-action="add" class="btn btn-outline-success add-btn update-cart">Tambahkan</button>
-          <h4 style="display: inline-block; float: right"><strong>Rp.{{Produk.harga|floatformat:0}}</strong></h4>
-        </div>
+            <button  data-produk="{{Produk.id}}" data-action="add" class="btn btn-outline-success add-btn update-cart">Tambahkan</button>
+            <h4 style="display: inline-block; float: right"><strong>Rp.{{Produk.harga|floatformat:0}}</strong></h4>
+          </div>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 
 {% endblock content %}

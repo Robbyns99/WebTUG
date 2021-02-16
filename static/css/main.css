@@ -98,8 +98,6 @@ h1,h2,h3,h4,h5,h6{
 	display: none!important;
 }
 
-#LogoToko{
-	width: 55px;
-	height: 45px;
-	margin-left: -650px;
+#form-button{
+	width: 100%;
 }

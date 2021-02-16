@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-import json
-import datetime
 from .utils import cookieCart, cartData, guestOrder
 from django.views.decorators.csrf import csrf_exempt
+import json
+import datetime
+import midtransclient
 
 from .models import Produk
 from .models import Customer
@@ -104,5 +105,43 @@ def prosesPesan(request):
 			idgame=data['pengiriman']['idgame'],
 			servergame=data['pengiriman']['servergame'],
 		)
+
+# 	# Buat instance Snap API 
+# 	snap = midtransclient.Snap(
+# 		is_production = False,
+# 		server_key = 'SB-Mid-server-Dn9OL3jS_ciTecK5wWjlwY2y',
+# 		client_key = 'SB-Mid-client-5lyycFVbjPEEm8fh' 
+# 	)
+# 	# setel ulang server_key hanya 
+# 	snap.api_config.set(server_key = 'SB-Mid-server-Dn9OL3jS_ciTecK5wWjlwY2y'),
+# 	# setel ulang hanya 
+# 	snap.api_config.set(is_production = True)
+
+# 	# Build API parameter
+# 	param = {
+#     	"transaction_details": {
+#         "order_id": "test-transaction-123",
+#         "gross_amount": 200000
+#     },	"credit_card":{
+#         "secure" : True
+#     },	"customer_details":{
+#         "first_name": "budi",
+#         "last_name": "pratama",
+#         "email": "budi.pra@example.com",
+#         "phone": "08111222333"
+#     }
+# }
+	 
+# 	transaction = snap.create_transaction(param)
+
+# 	transaction_token  =  transaction [ 'token' ]
+# 	print ( 'c3f7328f-f43c-4e65-a6d0-4bbcecb0d95c', )
+# 	print ( transaction_token )
+
+# 	# url pengalihan transaksi
+# 	transaction_redirect_url  =  transaction [ 'redirect_url' ]
+# 	print ( 'https://app.midtrans.com/snap/v2/vtweb/c3f7328f-f43c-4e65-a6d0-4bbcecb0d95c' )
+# 	print ( transaction_redirect_url )
+	
 
 	return JsonResponse('Pembayaran Selesai!',safe=False)

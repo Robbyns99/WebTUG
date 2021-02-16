@@ -8,9 +8,12 @@
     
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"> 
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
 
+    <!-- <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-5lyycFVbjPEEm8fh"></script> -->
     <script type="text/javascript"> 
         var user = '{{request.user}}'
 
@@ -57,7 +60,6 @@
 
             }
           }
-          // Kembali dikosongkan jika tidak ditemukan
           return JSON.parse(setCart);
         }
         
@@ -67,35 +69,32 @@
           console.log('Cart telah dibuat !!')
           document.cookie = 'cart=' + JSON.stringify(cart)+";domain=;path=/;secure"
         }
-
         console.log('Cart:', cart)
     </script>
   </head>
+
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid"></div>
       <a class="navbar-brand" href="{%url 'store'%}">
-        <img src="{%static 'images/Logo-Polos.png'%}" id="LogoToko">
-        Topup Game
+        <img src="{%static 'images/Logo-Polos.png'%}" width="55" height="45" class="d-inline-block align-center" alt="">
+        Topup Gaming
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
+      
+      <div class="text-judul">
+        <marquee style="color: #FFFFFF; font-family: Book Antiqua" behavior="alternate" scrollamount="4">
+          <i class='far fa-hand-point-left' style='font-size:20px;color:burlywood'></i>
+          Welcome to website e-commerce game
+        </marquee>
+      </div>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li> -->
         </ul>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="{%url 'store'%}">Home</a>
+          <a class="nav-item nav-link" href="#">About</a>
+          <a class="nav-item nav-link" href="#">Help</a>
+        </div>
         <div class="from-inline my-2 my-lg-0">
           <a href="{%url 'cart'%}">
             <img src="{%static 'images/cart.png'%}" id="cart-icon">
@@ -129,9 +128,9 @@
         <div class="content-socialmedia">
           <h2> Kontak kami : </h2>
           <ul>
-            <li class="fab fa-instagram"><a href="https://www.instagram.com/bisniman.online/">   Intagram  : @bisniman.online</a></li>
-            <li class='fab fa-google-plus'><a href="https://Eboygaming12@gmail.com"> Gmail     : robbynugrohos02@gmail.com</a></li>
-            <li class='fab fa-whatsapp'><a href="https://wa.me/6289609785921">    WhatsApp  : +62896-0978-5921</a></li>
+            <li class='fab fa-instagram' style="font-size:18px;"><a href="https://www.instagram.com/bisniman.online/">   Intagram  : @bisniman.online</a></li>
+            <li class='fab fa-google-plus' style="font-size:18px;"><a href="https://Eboygaming14@gmail.com"> Gmail     : eboygaming14@gmail.com</a></li>
+            <li class='fab fa-whatsapp' style="font-size:18px;"><a href="https://wa.me/6289609785921">    WhatsApp  : +(62)896-0978-5921</a></li>
           </ul>
         </div>
       </div>
@@ -146,9 +145,11 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     -->
+    
   <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script type="text/javascript" src="{% static 'js/cart2.js' %}"></script>  
+    <script src="https://kit.fontawesome.com/40ba528507.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/cart2.js' %}"></script>
+
   </body>
 </html>

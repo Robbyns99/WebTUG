@@ -31,7 +31,7 @@
             (<a href="{%static 'images/SG_MobLeg.jpg'%}">&#63;</a>)  Server game dalam sebuah game dibuat untuk kapasistas game berjalan dengan lancar
           </center>
           <hr>
-          <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+          <input id="form-button" class="btn btn-success btn-block" type="submit" value="Lakukan Transaksi">
         </form>
       </div>
       <br>
@@ -39,8 +39,11 @@
       <div class="box-element hidden" id="payment-info">
         <b><small>Pengaturan pembayaran</small></b>
         <div id="paypal-button-container"></div>
+        <!-- <center><button id="pay-button">Metode pembayaran yang lain </button></center>
+        <pre> <div  id = " hasil-json "> hasil JSON akan muncul di sini setelah pembayaran: <br></div> </pre> -->
         <!--<button id="make-payment">Buat pembayaran</button>-->
       </div>
+
     </div>
 
     <div class="col-lg-6">
@@ -63,25 +66,28 @@
     </div>
   </div>
 
-  <div id="dana-container"></div>
-
+  <!--PayPal Payment-->
   <script src="https://www.paypal.com/sdk/js?client-id=AeKgT282WDCRy3ho75F8FN15J-DgHNTGD-M47TEnFiCiCKvoajbLMva1OXh0tpZbrwq5JupzHqyxx6h7&currency=USD"></script>
+
   <script>
     var total = "{{pesan.get_cart_total}}"
+  
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
-
+      //CSS PayPal
       style:{
         color:'gold',
         shape:'pill',
+        label:'pay',
+        height: 45
       },
-
-        // Set up the transaction
+        // Siapkan transaksi
         createOrder: function(data, actions) {
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: '0.01'
+                        value: '2.01'
+                        //value: parseFloat(total).toFixed(2)
                     }
                 }]
             });
@@ -95,8 +101,34 @@
         }
 
     }).render('#paypal-button-container');
-</script>
+  </script>
 
+  <!-- Midtrans Payment
+  <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-5lyycFVbjPEEm8fh"> </script>
+
+  <script type="text/javascript">
+    var payButton = document.getElementById('pay-button');
+    // For example trigger on button clicked, or any time you need
+    payButton.addEventListener('click', function () {
+      snap.pay('c3f7328f-f43c-4e65-a6d0-4bbcecb0d95c',{
+        // Optional
+        onSuccess: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        },
+        // Optional
+        onPending: function(result){
+          /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        },
+        // Optional
+        onError: function(result){
+          /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        }
+      }); // Replace it with your transaction token
+    });
+  </script> -->
+
+
+  <!--Metode Pembayaran-->
   <script type="text/javascript">
     var pengirimian = '{{pesan.pengiriman}}'
     
@@ -179,8 +211,6 @@
         }
         var csrftoken = get_cookie('csrftoken');
 
-        
-
         var url = '/proses_pesan/'
         fetch(url,{
           method:'POST',
@@ -193,7 +223,7 @@
         .then((response)=>response.json())
         .then((data)=>{
           console.log('Berhasil:', data);
-          alert('Transaksi selesai');
+          alert('Transaksi selesai, Tuggu beberapa menit akan kami proses ke Game anda Terimakasih');
 
           let cart = {}
           document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
@@ -201,5 +231,5 @@
           window.location.href = "{%url 'store'%}"
         })
       }
-</script>
+  </script>
 {% endblock content %}

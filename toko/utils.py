@@ -89,3 +89,6 @@ def guestOrder(request, data):
     itemPesan = Itempesan.objects.create(produk=produk, pesan=pesan, jumlah=item['jumlah'])
     
   return customer, pesan
+
+def midtrans(request):
+  return
