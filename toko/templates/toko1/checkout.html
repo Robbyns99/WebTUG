@@ -21,15 +21,14 @@
             <p>Informasi pengirimian items :</p>
             <hr>
             <div class="form-field">
-              <input class="form-control" type="text" name="idgame" placeholder="Masukan ID">
+              <input class="form-control" type="text" name="idgame" placeholder="Masukan ID Game">
             </div>
             <div class="form-field">
               <input class="form-control" type="text" name="servergame" placeholder="(Masukan Server)">
             </div>
           </div>
-          <center>
-            (<a href="{%static 'images/SG_MobLeg.jpg'%}">&#63;</a>)  Server game dalam sebuah game dibuat untuk kapasistas game berjalan dengan lancar
-          </center>
+            <i class='fas fa-exclamation-triangle'></i>
+            Buat game yang tidak memiliki <b>Server Game</b> maka bisa di kosongkan, dan <b>Server Game</b> bisa diisi dengan huruf maupun angka sesuai alamat game!!!
           <hr>
           <input id="form-button" class="btn btn-success btn-block" type="submit" value="Lakukan Transaksi">
         </form>
@@ -48,7 +47,7 @@
 
     <div class="col-lg-6">
       <div class="box-element">
-        <a class="btn btn-outline-dark" href="{% url 'cart'%}">&#x2190; Kembali keawal</a>
+        <a class="btn btn-outline-warning" href="{% url 'cart'%}">&#171; Kembali keawal</a>
         <hr>
         <h3>Rincian</h3>
         <hr>
@@ -86,7 +85,7 @@
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: '2.01'
+                        value: '1.12'
                         //value: parseFloat(total).toFixed(2)
                     }
                 }]

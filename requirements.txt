@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 asgiref==3.2.10
 astroid==2.4.2
 colorama==0.4.3
@@ -13,3 +14,20 @@ sqlparse==0.3.1
 toml==0.10.1
 typed-ast==1.4.1
 wrapt==1.12.1
+=======
+asgiref==3.2.10
+astroid==2.4.2
+colorama==0.4.3
+Django==3.1
+isort==5.4.2
+lazy-object-proxy==1.4.3
+mccabe==0.6.1
+Pillow==7.2.0
+pylint==2.6.0
+pytz==2020.1
+six==1.15.0
+sqlparse==0.3.1
+toml==0.10.1
+typed-ast==1.4.1
+wrapt==1.12.1
+>>>>>>> 3f5573695b8db7f4e267998a331f27e1246532f1

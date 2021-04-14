@@ -1,0 +1,6 @@
+Perbedaan :
+1. Snap Rederek API = Website kita melakukan pembayaran di sistem platform.
+
+2. Snap API = Website kita melakukan pembayaran di tempat secara cepat, dan muncul Pop dari sistem platform pembayaran di website kita.
+
+3. Core API = Full menggunakan API, dan Json. Feedback Json saja dari platform, Tampilannya bisa di custom sendiri.

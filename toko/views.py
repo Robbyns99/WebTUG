@@ -14,6 +14,7 @@ from .models import Pesan
 
 #Apabil from .... import * (Semua) pada simbol bintang akan membuat akses pencarian menjadi berat pada Django
 
+
 def store(request):
 
 	data = cartData(request)
@@ -145,3 +146,25 @@ def prosesPesan(request):
 	
 
 	return JsonResponse('Pembayaran Selesai!',safe=False)
+
+def about(request):
+	data = cartData(request)
+	cartItems = data['cartItems']
+	pesan = data['pesan']
+	items = data['items']
+
+
+	produks = Produk.objects.all()
+	context = {'Produks':produks, 'cartItems':cartItems}
+	return render (request, 'toko1/about.html',context)
+
+def help(request):
+	data = cartData(request)
+	cartItems = data['cartItems']
+	pesan = data['pesan']
+	items = data['items']
+
+
+	produks = Produk.objects.all()
+	context = {'Produks':produks, 'cartItems':cartItems}
+	return render (request, 'toko1/help.html',context)

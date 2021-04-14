@@ -1,0 +1,32 @@
+{% extends 'toko1/main.html' %}
+{% load static %}
+{% block content %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-150" src="{%static 'source.gif'%}" alt="First slide">
+    </div>
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Welcome To Website</h5>
+      <p>Mari mengenal tentang website TopUp Gaming</p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="tentang-usaha">
+  <div id="content">
+    <br>
+    <br>
+      <h1><b> TopUp Gaming </b></h1>
+      <p>TopUp Gaming adalah suatu usaha online yang menjual belikan tentang produk
+        isi ulang e-moneygame. Website ini termasuk dalam bidang website e-commerce,
+        target sasaran yaitu semua kalangan umur, maupun gender yang berbeda. Website
+        ini aman bagi para pemain yang data game tidak akan dicuri. Mengirim e-moneygame
+        hanya membutuhkan <u>Id Game</u> maupun <u>Server Game</u>. Untuk memasukan nama
+        dan email, hanya sebatas bukti kalau saja ada kendala dalam pengiriman produk.
+      </p>
+  </div>
+  <img src="{%static 'images/Logo-Polos.png'%}" id="about-logo"/>
+</div>
+
+{% endblock content %}

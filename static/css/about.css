@@ -1,0 +1,49 @@
+/* Make the image fully responsive */
+.carousel-inner{
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.8);
+}
+.carousel-inner img {
+	width: 100%;
+	height: 300px;
+	position: relative;
+}
+.carousel-inner p{
+	color: #fff;
+	width: 60%;
+	font-size:large;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	display: inline-block;
+  background: #ff00003c;
+}
+.carousel-inner h5{
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size:large;
+	width: 40%;
+	color: whitesmoke;
+  background: #ff00003c;
+  display: inline-block;
+}
+
+.tentang-usaha {
+  display:grid;
+  grid-template-columns: 66% auto;
+  padding: 4em 1em;
+  margin:0;
+  background-color: rgb(2, 247, 43);
+  border: 15px solid rgb(240, 2, 2);
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.8);
+}
+#about-logo {
+  display: inline-block;
+  height: 350px;
+  width: 400px;
+}
+.tentang-usaha h1{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  text-shadow: 3px 1px 1px grey;
+}
+.p{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  text-align: justify;
+
+}

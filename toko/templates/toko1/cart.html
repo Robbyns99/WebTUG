@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="box-element">
-        <a class= "btn btn-outline-dark" href="{% url 'store'%}">&#171; Lanjut pilih item</a>
+        <a class= "btn btn-outline-warning" href="{% url 'store'%}" title="Kembali ke Home">&#171; Lanjut pilih item</a>
       <br>
       <br>      
         <table class="table">
@@ -12,7 +12,7 @@
             <th><h5>Items: <strong>{{pesan.get_cart_items}}</strong></h5></th>
             <th><h5>Total:<strong> Rp.{{pesan.get_cart_total|floatformat:0}}</strong></h5></th>
             <th>
-              <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+              <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}" title="Lanjutkan pembayaran">Checkout</a>
             </th>
           </tr>
         </table>

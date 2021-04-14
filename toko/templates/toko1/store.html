@@ -1,21 +1,24 @@
 {% extends 'toko1/main.html' %}
 {% load static %}
 {% block content %}
-  <div class="cursor">
-    <div class="row">
-      {% for Produk in Produks %}
-      <div class="col-lg-4">
-          <img class="thumbnail" src="{{Produk.imageURL}}">
-          <div class="box-element product">
-            <h6><strong>{{Produk.nama}}</strong></h6>
-            <hr>
-
-            <button  data-produk="{{Produk.id}}" data-action="add" class="btn btn-outline-success add-btn update-cart">Tambahkan</button>
-            <h4 style="display: inline-block; float: right"><strong>Rp.{{Produk.harga|floatformat:0}}</strong></h4>
-          </div>
-      </div>
-      {% endfor %}
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>
+        <img src="{%static 'images/PUBG.gif'%}" width="60" height="55" class="d-inline-block align-center" alt="">
+        <strong>--Pilih Game Kalian Mainkan--</strong>
+        <img src="{%static 'images/PUBG.gif'%}" width="60" height="55" class="d-inline-block align-center" alt="">
+      </h2>
     </div>
+    {% for Produk in Produks %}
+    <div class="col-lg-4">
+        <img class="thumbnail" src="{{Produk.imageURL}}">
+        <div class="box-element product">
+          <h6><strong>{{Produk.nama}}</strong></h6>
+          <hr>
+          <button  data-produk="{{Produk.id}}" data-action="add" class="btn btn-outline-success add-btn update-cart">Tambahkan</button>
+          <h4 style="display: inline-block; float: right"><strong>Rp.{{Produk.harga|floatformat:0}}</strong></h4>
+        </div>
+    </div>
+    {% endfor %}
   </div>
-
 {% endblock content %}

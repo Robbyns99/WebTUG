@@ -30,10 +30,11 @@ h1,h2,h3,h4,h5,h6{
 }
 
 #cart-icon{
-  width:28px;
-  height: 35px;
+  width:30px;
+  height: 37px;
 	display: inline-block;
 	margin-left: 15px;
+	margin-top: 10px;
 }
 
 #cart-total{
@@ -41,10 +42,12 @@ h1,h2,h3,h4,h5,h6{
 	text-align: center;
 	color:#fff;
 	background-color: red;
-	width: 21px;
-	height: 22px;
+	width: 20px;
+	height: 20px;
 	border-radius: 50%;
-	font-size: 13px;
+	font-size: 11.5px;
+	margin-left: -5px;
+	margin-bottom: 30px;
 }
 
 .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
@@ -71,15 +74,12 @@ h1,h2,h3,h4,h5,h6{
     padding-bottom: 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid #ececec;
-
 }
 
 .quantity{
 	display: inline-block;
 	font-weight: 700;
 	padding-right:10px;
-	
-
 }
 
 .chg-quantity{
