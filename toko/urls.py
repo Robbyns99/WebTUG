@@ -10,4 +10,5 @@ urlpatterns = [
 
 	path('update_item/', views.updateItem, name="update_item"),
 	path('proses_pesan/', views.prosesPesan, name="proses_pesan"),
+	# path('success/', views.success, name="success"),
 ]

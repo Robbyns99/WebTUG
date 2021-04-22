@@ -60,10 +60,10 @@ def cartData(request):
   return{'cartItems':cartItems, 'pesan':pesan, 'items':items}
 
 def guestOrder(request, data):
-  print("User is'n logged in..")
+  # print("User is'n logged in..")
   
     
-  print('COOKIES:', request.COOKIES)
+  # print('COOKIES:', request.COOKIES)
   nama = data['form']['nama']
   email = data['form']['email']
   # input user
@@ -77,7 +77,7 @@ def guestOrder(request, data):
   items = cookieData['items']
 
   customer, created = Customer.objects.get_or_create(
-    email=email,
+    email= email,
     nama = nama,
     user = User.objects.get(username=user[0]))
   
@@ -87,5 +87,5 @@ def guestOrder(request, data):
   for item in items:
     produk = Produk.objects.get(id=item['produk']['id'])
     itemPesan = Itempesan.objects.create(produk=produk, pesan=pesan, jumlah=item['jumlah'])
-    
+
   return customer, pesan

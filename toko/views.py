@@ -2,6 +2,10 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .utils import cookieCart, cartData, guestOrder
 from django.views.decorators.csrf import csrf_exempt
+# from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
+
 import json
 import datetime
 import midtransclient
@@ -11,6 +15,9 @@ from .models import Customer
 from .models import Itempesan
 from .models import IDpesan
 from .models import Pesan
+
+from django.core.mail import send_mail
+from ecommerce.settings import EMAIL_HOST_USER
 
 #Apabil from .... import * (Semua) pada simbol bintang akan membuat akses pencarian menjadi berat pada Django
 
@@ -83,7 +90,11 @@ def prosesPesan(request):
 	transaksi_id = datetime.datetime.now().timestamp()
 	data = json.loads(request.body)
 
-	print( data)
+	email_customer = data['form']['email']
+	nama = data['form']['nama']
+	id_game = data['pengiriman']['idgame']
+	id_server = data['pengiriman']['servergame']
+
 
 	if request.user.is_authenticated:
 		customer = request.user.customer
@@ -106,6 +117,16 @@ def prosesPesan(request):
 			idgame=data['pengiriman']['idgame'],
 			servergame=data['pengiriman']['servergame'],
 		)
+
+		# SEND EMAIL
+		# template = render_to_string('toko1/email.html',{'nama':request.customer.nama})
+		subject = 'Kofirmasi Pembayaran'
+		# message = template
+		message = 'Haiii {} !!! Pembayaran anda sudah berhasil mohon tunggu 1x24, apabila item game belum masuk silakan menghubungi admin dengan bukti Pembayaran ini. --Id game: {}-- --server game: {}-- .. Terimaksih sudah membeli'.format(nama, id_game, id_server)
+		recepient = email_customer
+		send_mail(subject, message, EMAIL_HOST_USER, [recepient], fail_silently = False)
+
+	return JsonResponse('Pembayaran Selesai!',safe=False)
 
 # 	# Buat instance Snap API 
 # 	snap = midtransclient.Snap(
@@ -142,10 +163,21 @@ def prosesPesan(request):
 # 	# url pengalihan transaksi
 # 	transaction_redirect_url  =  transaction [ 'redirect_url' ]
 # 	print ( 'https://app.midtrans.com/snap/v2/vtweb/c3f7328f-f43c-4e65-a6d0-4bbcecb0d95c' )
-# 	print ( transaction_redirect_url )
-	
+# 	print ( transaction_redirect_url )	
 
-	return JsonResponse('Pembayaran Selesai!',safe=False)
+	
+# # Cara pertama pengiriman Email # #
+# def success(request):
+# 	template = render_to_string('toko1/email.html',{'nama':request.customer.nama})
+# 	email = EmailMessage(
+# 		'Berhasil Pembayaran !!!',
+# 		template,
+# 		settings.EMAIL_HOST_USER,
+# 		[request.customer.email],
+# 	)
+# 	email.fail_silently=False
+# 	email.send()
+# 	return render(request, 'toko1/email.html')
 
 def about(request):
 	data = cartData(request)
